@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+i {
+    pointer-events: none;
+}
+
+body {
+    background: linear-gradient(45deg, rgb(84, 130, 255), rgb(100, 255, 134));
+}
+
+header {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: white;
+        font-size: 3rem;
+    }
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input, button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        margin: 0.1rem;
+    }
+
+    input[type="number"] {
+        width: 50px;
+        text-align: center;
+    }
+
+    // 以下為將 input 預設的上下鍵移除的程式碼
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+
+
+    button {
+        cursor: pointer;
+        background-color: rgb(0, 146, 114);
+        color: white;
+    }
+}
+
+
+// 點擊 Add into List 之後，項目會新增到 section，這邊是針對 section 所做的 CSS 設定
+section {
+    display: flex;
+    flex-direction: column; // 直式的
+    align-items: center;
+
+    div.todo {
+        width: 30vw;
+        display: flex; // 預設是橫的
+        align-items: center;
+
+        margin: 0.5rem 0rem;
+
+        transition: all 0.2s ease;
+
+        p {
+            background-color: white;
+            color: black;
+            padding: 0.25rem 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        p.todo-text {
+            width: 50%;
+        }
+
+        p.todo-time {
+            width: 20%;
+            text-align: center;
+        }
+
+
+        // 勾勾＆垃圾桶 的樣式
+        button {
+            padding: 0.25rem 0.5rem;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        button.complete {
+            background-color: rgb(101, 214, 126);
+        }
+
+        button.trash {
+            background-color: red;
+        }
+    }
+}
+
+div.sort {  // 排序時間的按鈕
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+
+    button {
+        border: none;
+        padding: 0.25rem 0.5rem;
+        font-size: 1.75rem;
+        cursor: pointer;
+        background-color: rgb(0, 146, 114);
+        color: white;
+    }
+}
+
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem; // 粗細程度
+}
+
+
+// add items 時的動畫效果，逐漸放大
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+
+// remove items 時的動畫效果，要縮小
+@keyframes scaleDown {
+    // 不用加 from 是因為原本的狀態就是 1 了（上面的1）
+    to {
+        transform: scale(0);
+    }
+}
